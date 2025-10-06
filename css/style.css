@@ -585,3 +585,68 @@ body {
     text-align: center;
     font-weight: 500;
 }
+
+/* =========================================
+   15. MOBILE DESIGN ENHANCEMENTS
+   ========================================= */
+
+@media (max-width: 768px) {
+
+    /* --- 1. Typography & Spacing --- */
+    /* Reduce headline sizes for a better mobile hierarchy */
+    h1 { font-size: 2.2rem; }
+    h2 { font-size: 1.8rem; }
+    
+    /* Reduce vertical padding on sections to tighten up the layout */
+    section {
+        padding: 50px 0;
+    }
+
+    /* --- 2. Gallery Enhancements --- */
+    .project-card {
+        /* Replace shadow with a clean border for a lighter mobile feel */
+        box-shadow: none;
+        border: 1px solid #ddd;
+        /* Disable the hover-up effect on touch devices */
+        transform: none !important;
+    }
+
+    .zoom-detail {
+        /* Make the zoom circle larger and more prominent on mobile */
+        width: 120px;
+        height: 120px;
+        bottom: 10px;
+        right: 10px;
+    }
+
+    /* --- 3. Better Tap Targets --- */
+    .btn {
+        /* Increase padding to make buttons easier to tap */
+        padding: 15px 30px;
+    }
+
+    .view-project-link {
+        /* Transform the link into a proper button */
+        display: inline-block;
+        background-color: var(--color-light);
+        padding: 10px 20px;
+        border-radius: var(--border-radius);
+        border: 1px solid #ddd;
+        color: var(--color-dark);
+        font-weight: 500;
+        text-align: center;
+        margin-top: 1rem;
+    }
+    
+    .view-project-link:hover {
+        background-color: #e9e9e9;
+        opacity: 1;
+    }
+    
+    /* --- 4. Form Usability --- */
+    .form-group input,
+    .form-group textarea {
+        /* Increase font size to prevent iOS auto-zoom and improve readability */
+        font-size: 16px;
+    }
+}
