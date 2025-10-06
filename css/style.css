@@ -1,0 +1,587 @@
+/* =========================================
+   1. GLOBAL STYLES & DESIGN SYSTEM
+   ========================================= */
+
+/* --- Design System: Variables --- */
+:root {
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;
+
+    --color-dark: #2c2c2c;       /* Charcoal Grey */
+    --color-light: #f4f4f4;      /* Off-white */
+    --color-accent: #c0a062;     /* Soft Gold */
+    --color-white: #ffffff;
+
+    --content-width: 1100px;
+    --border-radius: 5px;
+}
+
+/* --- Simple CSS Reset --- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* --- Base Styles --- */
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-body);
+    line-height: 1.6;
+    color: var(--color-dark);
+    background-color: var(--color-white);
+    -webkit-font-smoothing: antialiased;
+}
+
+img, video {
+    max-width: 100%;
+    display: block;
+}
+
+/* --- Typography --- */
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+}
+
+h1 { font-size: 3.5rem; }
+h2 { font-size: 2.5rem; }
+h3 { font-size: 1.5rem; }
+p { margin-bottom: 1rem; }
+a {
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+a:hover {
+    opacity: 0.8;
+}
+
+/* --- Reusable Utility Classes --- */
+.container {
+    width: 100%;
+    max-width: var(--content-width);
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 20px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    background-color: var(--color-accent);
+    color: var(--color-white);
+    font-family: var(--font-body);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+    background-color: #a98d56; /* A slightly darker shade of accent */
+    transform: translateY(-2px);
+    opacity: 1; /* Override the default link hover */
+}
+
+/* =========================================
+   2. HEADER & HERO SECTION
+   ========================================= */
+.hero {
+    color: var(--color-white);
+    background-color: var(--color-dark); /* Fallback color */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../images/hero-background.png');    background-size: cover;
+    background-position: center center;
+    height: 100vh; /* Full viewport height */
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    /* Ken Burns Animation */
+    animation: kenburns 20s ease-in-out infinite;
+}
+
+@keyframes kenburns {
+    0%, 100% {
+        transform: scale(1) translate(0, 0);
+    }
+    50% {
+        transform: scale(1.1) translate(-10px, 10px);
+    }
+}
+
+.hero-content {
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.hero-subtitle {
+    font-size: 1.25rem;
+    font-weight: 400;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+}
+
+/* =========================================
+   3. GENERAL SECTION STYLES
+   ========================================= */
+section {
+    padding: 80px 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+/* Give alternating sections a light background for contrast */
+.gallery-section, .process-section, .cta-section {
+    background-color: var(--color-light);
+}
+
+
+/* =========================================
+   4. ABOUT SECTION
+   ========================================= */
+.about-container {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+
+.about-image {
+    flex: 1; /* Takes up 50% of the space */
+}
+.about-image img {
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.about-text {
+    flex: 1; /* Takes up 50% of the space */
+}
+
+
+/* =========================================
+   5. GALLERY SECTION
+   ========================================= */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.project-card {
+    background-color: var(--color-white);
+    border-radius: var(--border-radius);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    overflow: hidden; /* Ensures image corners are rounded */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+}
+
+.card-content {
+    padding: 1.5rem;
+}
+
+.card-content h3 {
+    margin-bottom: 0.5rem;
+}
+
+.view-project-link {
+    display: inline-block;
+    margin-top: 1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+}
+
+/* =========================================
+   6. PROCESS SECTION
+   ========================================= */
+.process-steps {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    gap: 2rem;
+}
+
+.step {
+    flex: 1;
+    padding: 0 1rem;
+}
+
+.step-number {
+    width: 50px;
+    height: 50px;
+    background-color: var(--color-accent);
+    color: var(--color-white);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-family: var(--font-heading);
+    margin: 0 auto 1.5rem auto;
+}
+
+/* =========================================
+   7. PHILOSOPHY SECTION
+   ========================================= */
+.philosophy-section {
+    text-align: center;
+}
+.philosophy-section h2 {
+    margin-bottom: 2rem;
+}
+.philosophy-text {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1.25rem;
+    line-height: 1.7;
+}
+
+/* =========================================
+   8. CALL TO ACTION (CTA) SECTION
+   ========================================= */
+.cta-section {
+    text-align: center;
+}
+.cta-section p {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2rem;
+}
+
+/* =========================================
+   9. FOOTER
+   ========================================= */
+.site-footer {
+    background-color: var(--color-dark);
+    color: var(--color-light);
+    text-align: center;
+    padding: 30px 0;
+}
+.site-footer p {
+    margin-bottom: 0;
+    opacity: 0.7;
+}
+
+/* =========================================
+   10. INTERACTIVITY & ANIMATIONS
+   ========================================= */
+
+/* --- Fade-in on scroll effect --- */
+/* Initially, hide the elements */
+section, .project-card {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+/* The 'visible' class will be added by JavaScript */
+section.visible, .project-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+/* The hero section should be visible on load, not animated in */
+.hero {
+    opacity: 1;
+    transform: none;
+}
+
+/* --- Modal (Lightbox) Styles --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-content {
+    background-color: var(--color-white);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    max-width: 700px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    animation: slideUp 0.4s ease-in-out;
+}
+
+.modal-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 2.5rem;
+    color: #999;
+    cursor: pointer;
+    line-height: 1;
+    transition: color 0.2s ease;
+}
+.modal-close:hover {
+    color: var(--color-dark);
+}
+
+.modal-content img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+    margin-bottom: 1.5rem;
+}
+
+.modal-content h2 {
+    margin-bottom: 0.5rem;
+}
+
+/* --- Modal Animations --- */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.modal-overlay.closing {
+    animation: fadeOut 0.3s ease-in-out forwards;
+}
+.modal-overlay.closing .modal-content {
+    animation: slideDown 0.3s ease-in-out forwards;
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+@keyframes slideDown {
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(50px); }
+}
+
+/* =========================================
+   11. RESPONSIVE DESIGN (MEDIA QUERIES)
+   ========================================= */
+
+/* --- For smaller desktops and large tablets (max-width: 1100px) --- */
+@media (max-width: 1100px) {
+    h1 { font-size: 3rem; }
+    h2 { font-size: 2.2rem; }
+}
+
+/* --- For standard tablets (max-width: 992px) --- */
+@media (max-width: 992px) {
+    .gallery-grid {
+        /* Switch from 3 columns to 2 */
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* --- For small tablets and mobile phones (max-width: 768px) --- */
+@media (max-width: 768px) {
+    /* Adjust base font size for smaller screens */
+    html {
+        font-size: 15px;
+    }
+    
+    section {
+        padding: 60px 0; /* Reduce vertical padding */
+    }
+
+    /* --- Responsive Typography --- */
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+    .section-title { margin-bottom: 3rem; }
+
+    /* --- Stack two-column layouts vertically --- */
+    .about-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .about-image {
+        margin-bottom: 2rem;
+    }
+
+    /* --- Stack gallery items into a single column --- */
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* --- Stack process steps vertically --- */
+    .process-steps {
+        flex-direction: column;
+        gap: 3rem;
+    }
+    .step {
+        padding: 0;
+    }
+}
+
+/* --- Hides the scrollbar visually but keeps scrolling functionality --- */
+
+/* For Webkit browsers (Chrome, Safari, Edge) */
+body::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* make scrollbar transparent */
+}
+
+/* For Firefox */
+html {
+  scrollbar-width: none;
+}
+
+/* For IE/Edge (older versions) */
+body {
+  -ms-overflow-style: none;
+}
+
+/* =========================================
+   12. DISCLAIMER & CONCEPT STYLES
+   ========================================= */
+
+/* --- Style for the intro sentence in the gallery --- */
+.gallery-intro {
+    text-align: center;
+    max-width: 600px;
+    margin: -2rem auto 3rem auto; /* Pulls it closer to the title */
+    font-size: 1.1rem;
+    color: #555; /* Slightly softer than the main text color */
+}
+
+/* --- Style for the 'Concept' tag on each card --- */
+.project-tag {
+    display: inline-block;
+    background-color: var(--color-light);
+    border: 1px solid #ddd;
+    color: #777;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 1rem;
+}
+
+/* =========================================
+   13. GALLERY ZOOM EFFECT
+   ========================================= */
+
+.project-image-container {
+    position: relative; /* This is crucial for positioning the zoom element */
+    overflow: hidden; /* Ensures nothing spills out */
+}
+
+.main-image {
+    display: block;
+    width: 100%;
+}
+
+.zoom-detail {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    
+    width: 100px;
+    height: 100px;
+    
+    border-radius: 50%; /* This makes the container circular */
+    border: 3px solid var(--color-white);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    
+    overflow: hidden; /* This clips the square image inside to the circular shape */
+    transition: transform 0.3s ease;
+}
+
+.detail-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image fills the circle without distortion */
+    transform: scale(1.1); /* A subtle zoom to enhance the 'magnified' feel */
+}
+
+/* Optional: A subtle hover effect to make it feel more interactive */
+.project-card:hover .zoom-detail {
+    transform: scale(1.1);
+}
+
+/* =========================================
+   14. CONTACT FORM STYLES
+   ========================================= */
+#contact-form {
+    max-width: 600px;
+    margin: 2rem auto 0 auto;
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #555;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: var(--border-radius);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(192, 160, 98, 0.3);
+}
+
+#contact-form .btn {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1rem;
+}
+
+#form-status {
+    margin-top: 1rem;
+    text-align: center;
+    font-weight: 500;
+}
