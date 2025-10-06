@@ -100,47 +100,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // =========================================
-    // 4. CONTACT FORM HANDLING
-    // =========================================
-    const form = document.getElementById('contact-form');
-    if (form) {
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            const status = document.getElementById('form-status');
-            const data = new FormData(form);
-            
-            try {
-                status.textContent = 'Sending...';
-                status.style.color = '#555';
-
-                const response = await fetch(form.action, {
-                    method: form.method,
-                    body: data,
-                    headers: {
-                        'Accept': 'application/json'
-                    }
-                });
-
-                if (response.ok) {
-                    status.textContent = "Thank you! I'll be in touch soon.";
-                    status.style.color = 'green';
-                    form.reset();
-                } else {
-                    const responseData = await response.json();
-                    if (responseData.errors) {
-                        status.textContent = responseData.errors.map(error => error.message).join(", ");
-                    } else {
-                        status.textContent = 'Oops! There was a problem submitting your form.';
-                    }
-                    status.style.color = 'red';
-                }
-            } catch (error) {
-                status.textContent = 'Oops! There was a problem submitting your form.';
-                status.style.color = 'red';
-            }
-        });
-    }
-
 });
